@@ -27,6 +27,58 @@ class ProductManagerTest {
     private Product fourth = new Product(4, "Java: A Beginner's Guide", 19_94);
 
     @Test
+    void shouldSearchByFindSmartphone() {
+        String text = "Electronics";
+        Product[] expected = new Product[] { first, third };
+        repository.add(first);
+        repository.add(second);
+        repository.add(third);
+        repository.add(fourth);
+        Product[] actual = repository.searchBy("Electronics");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearchByFindBook() {
+        String text = "Anna";
+        Product[] expected = new Product[] { second };
+        repository.add(first);
+        repository.add(second);
+        repository.add(third);
+        repository.add(fourth);
+        Product[] actual = repository.searchBy("Anna");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearchByFindProduct() {
+        String text = "Java: A Beginner's Guide";
+        Product[] expected = new Product[] { fourth };
+        repository.add(first);
+        repository.add(second);
+        repository.add(third);
+        repository.add(fourth);
+        Product[] actual = repository.searchBy("Java: A Beginner's Guide");
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldSearchByNotFind() {
+        String text = "Java11";
+        Product[] expected = new Product[] {};
+        repository.add(first);
+        repository.add(second);
+        repository.add(third);
+        repository.add(fourth);
+        Product[] actual = repository.searchBy("Java11");
+
+        assertArrayEquals(expected, actual);
+    }
+
+/*    @Test
     void shouldAdd() {
         Product[] expected = new Product[] { first, second };
         repository.add(first);
@@ -99,31 +151,5 @@ class ProductManagerTest {
         boolean actual = repository.matches(fourth, text);
 
         assertEquals(expected, actual);
-    }
-
-    @Test
-    void shouldSearchByFind() {
-        String text = "Electronics";
-        Product[] expected = new Product[] { first, third };
-        repository.add(first);
-        repository.add(second);
-        repository.add(third);
-        repository.add(fourth);
-        Product[] actual = repository.searchBy("Electronics");
-
-        assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    void shouldSearchByNotFind() {
-        String text = "Gogle";
-        Product[] expected = new Product[] {};
-        repository.add(first);
-        repository.add(second);
-        repository.add(third);
-        repository.add(fourth);
-        Product[] actual = repository.searchBy("Gogle");
-
-        assertArrayEquals(expected, actual);
-    }
+    }*/
 }
