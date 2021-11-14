@@ -16,6 +16,7 @@ class SmartphoneTest {
     private Smartphone third = new Smartphone(
             1, "Samsung Galaxy M12 Smartphone", 127_00, "Samsung Electronics"
     );
+    private Product fourth = new Product();
 
     //Constructor without parameters
     @Test
@@ -74,9 +75,16 @@ class SmartphoneTest {
     }
 
     @Test
-    void shouldCanEqualClass() {
+    void shouldCanEqualNull() {
         boolean expected = false;
         boolean actual = first.equals(null);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldCanEqualClass() {
+        boolean expected = false;
+        boolean actual = first.equals(fourth);
         assertEquals(expected, actual);
     }
 

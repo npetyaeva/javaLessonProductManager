@@ -9,6 +9,10 @@ class ProductTest {
     private Product first = new Product(1, "Google It!: A History of Google", 14_62);
     private Product second = new Product(2, "Samsung Galaxy M12 Smartphone", 127_00);
     private Product third = new Product(1, "Google It!: A History of Google", 14_62);
+    private Book fourth = new Book();
+    private Product fifth = new Product(5, "Google It!: A History of Google", 14_62);
+    private Product sixth = new Product(1, "Google It!: A History of Google", 14_00);
+    private Product seventh = new Product(1, "Google It!", 14_62);
 
     //Constructor without parameters
     @Test
@@ -111,7 +115,35 @@ class ProductTest {
     @Test
     void shouldCanEqualClass() {
         boolean expected = false;
+        boolean actual = first.equals(fourth);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldCanEqualNull() {
+        boolean expected = false;
         boolean actual = first.equals(null);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldCanEqualAnd() {
+        boolean expected = false;
+        boolean actual = first.equals(fifth);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldCanEqualAnd1() {
+        boolean expected = false;
+        boolean actual = first.equals(sixth);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldCanEqualAnd2() {
+        boolean expected = false;
+        boolean actual = first.equals(seventh);
         assertEquals(expected, actual);
     }
 

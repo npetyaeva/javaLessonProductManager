@@ -16,6 +16,7 @@ class BookTest {
     private Book third = new Book(
             1, "Google It!: A History of Google", 14_62, "Anna Crowley Redding"
     );
+    private Product fourth = new Product();
 
     //Constructor without parameters
     @Test
@@ -74,9 +75,16 @@ class BookTest {
     }
 
     @Test
-    void shouldCanEqualClass() {
+    void shouldCanEqualNull() {
         boolean expected = false;
         boolean actual = first.equals(null);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldCanEqualClass() {
+        boolean expected = false;
+        boolean actual = first.equals(fourth);
         assertEquals(expected, actual);
     }
 
