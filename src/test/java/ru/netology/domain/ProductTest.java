@@ -162,4 +162,20 @@ class ProductTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldMatchesTrue() {
+        boolean expected = true;
+        boolean actual = first.matches("Google");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldMatchesFalse() {
+        boolean expected = false;
+        boolean actual = first.matches("Gogle");
+
+        assertEquals(expected, actual);
+    }
 }

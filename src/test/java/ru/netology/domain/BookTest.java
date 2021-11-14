@@ -95,4 +95,36 @@ class BookTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldMatchesTrue() {
+        boolean expected = true;
+        boolean actual = first.matches("Anna");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldMatchesFalse() {
+        boolean expected = false;
+        boolean actual = first.matches("Herbert");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldMatchesSuperTrue() {
+        boolean expected = true;
+        boolean actual = first.matches("Google");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldMatchesSuperFalse() {
+        boolean expected = false;
+        boolean actual = first.matches("Java");
+
+        assertEquals(expected, actual);
+    }
 }

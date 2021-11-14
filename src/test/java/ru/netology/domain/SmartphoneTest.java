@@ -95,4 +95,36 @@ class SmartphoneTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void shouldMatchesTrue() {
+        boolean expected = true;
+        boolean actual = first.matches("Samsung");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldMatchesFalse() {
+        boolean expected = false;
+        boolean actual = first.matches("Motorola");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldMatchesSuperTrue() {
+        boolean expected = true;
+        boolean actual = first.matches("Galaxy M12");
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldMatchesSuperFalse() {
+        boolean expected = false;
+        boolean actual = first.matches("One 5G");
+
+        assertEquals(expected, actual);
+    }
 }
