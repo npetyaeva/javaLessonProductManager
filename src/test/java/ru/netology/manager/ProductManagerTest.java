@@ -1,17 +1,28 @@
 package ru.netology.manager;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.verify;
 
+@ExtendWith(MockitoExtension.class)
 class ProductManagerTest {
-    ProductManager repository = new ProductManager();
+    @Mock
+    private ProductRepository repository = Mockito.mock(ProductRepository.class); //притворяжка - Я репозиторий
+
+    @InjectMocks
+    private ProductManager manager = new ProductManager(repository); //передача притворяжки менеджеру
 
     private Product emptyProduct = new Product();
     private Book emptyBook = new Book();
@@ -30,54 +41,84 @@ class ProductManagerTest {
 
     @BeforeEach
     public void setUp() {
-        repository.add(first);
-        repository.add(second);
-        repository.add(third);
-        repository.add(fourth);
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
     }
 
     @Test
     void shouldSearchByFindSmartphone() {
+        //настройка заглушки
+        Product[] returned = { first, second, third, fourth };
+        doReturn(returned).when(repository).findAll();
+
         String text = "Electronics";
         Product[] expected = new Product[] { first, third };
-        Product[] actual = repository.searchBy("Electronics");
+        Product[] actual = manager.searchBy("Electronics");
 
         assertArrayEquals(expected, actual);
+
+        verify(repository).findAll();
     }
 
     @Test
     void shouldSearchByFindBook() {
+        //настройка заглушки
+        Product[] returned = { first, second, third, fourth };
+        doReturn(returned).when(repository).findAll();
+
         String text = "Anna";
         Product[] expected = new Product[] { second };
-        Product[] actual = repository.searchBy("Anna");
+        Product[] actual = manager.searchBy("Anna");
 
         assertArrayEquals(expected, actual);
+
+        verify(repository).findAll();
     }
 
     @Test
     void shouldSearchByFindProduct() {
+        //настройка заглушки
+        Product[] returned = { first, second, third, fourth };
+        doReturn(returned).when(repository).findAll();
+
         String text = "Java: A Beginner's Guide";
         Product[] expected = new Product[] { fourth };
-        Product[] actual = repository.searchBy("Java: A Beginner's Guide");
+        Product[] actual = manager.searchBy("Java: A Beginner's Guide");
 
         assertArrayEquals(expected, actual);
+
+        verify(repository).findAll();
     }
 
     @Test
     void shouldSearchByNotFind() {
+        //настройка заглушки
+        Product[] returned = { first, second, third, fourth };
+        doReturn(returned).when(repository).findAll();
+
         String text = "Java11";
         Product[] expected = new Product[] {};
-        Product[] actual = repository.searchBy("Java11");
+        Product[] actual = manager.searchBy("Java11");
 
         assertArrayEquals(expected, actual);
+
+        verify(repository).findAll();
     }
 
     @Test
     void shouldGetAll() {
+        //настройка заглушки
+        Product[] returned = { first, second, third, fourth };
+        doReturn(returned).when(repository).findAll();
+
         Product[] expected = new Product[] { first, second, third, fourth };
-        Product[] actual = repository.getAll();
+        Product[] actual = manager.getAll();
 
         assertArrayEquals(expected, actual);
+
+        verify(repository).findAll();
     }
 
 /*    @Test
