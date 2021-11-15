@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookTest {
-    private Book emptyBook = new Book();
+    private final Book emptyBook = new Book();
 
-    private Book first = new Book(
+    private final Book first = new Book(
             1, "Google It!: A History of Google", 14_62, "Anna Crowley Redding"
     );
-    private Book second = new Book(
+    private final Book second = new Book(
             2, "Java: A Beginner's Guide", 19_94, "Herbert Schildt"
     );
-    private Book third = new Book(
+    private final Book third = new Book(
             1, "Google It!: A History of Google", 14_62, "Anna Crowley Redding"
     );
-    private Product fourth = new Product();
+    private final Product fourth = new Product();
 
     //Constructor without parameters
     @Test
@@ -98,33 +98,25 @@ class BookTest {
 
     @Test
     void shouldMatchesTrue() {
-        boolean expected = true;
         boolean actual = first.matches("Anna");
-
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
     void shouldMatchesFalse() {
-        boolean expected = false;
         boolean actual = first.matches("Herbert");
-
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
     void shouldMatchesSuperTrue() {
-        boolean expected = true;
         boolean actual = first.matches("Google");
-
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
     void shouldMatchesSuperFalse() {
-        boolean expected = false;
         boolean actual = first.matches("Java");
-
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 }

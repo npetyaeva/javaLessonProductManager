@@ -27,11 +27,8 @@ public class ProductRepository {
     }
 
     public void removeById(int id) {
-        boolean flag = false;
-        for (Product item : items) {
-            if (item.getId() == id) flag = true;
-        }
-        if (flag == true) {
+        Product idExists = findById(id);
+        if (idExists != null) {
             int length = items.length - 1;
             Product[] tmp = new Product[length];
             int index = 0;

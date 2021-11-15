@@ -10,15 +10,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductRepositoryTest {
     private ProductRepository repository = new ProductRepository();
 
-    private Product emptyProduct = new Product();
-    private Book emptyBook = new Book();
-    private Smartphone emptySmartphone = new Smartphone();
+    private final Product emptyProduct = new Product();
+    private final Book emptyBook = new Book();
+    private final Smartphone emptySmartphone = new Smartphone();
 
-    private Product first = new Product(1, "Java: A Beginner's Guide", 19_94);
-    private Book second = new Book(
+    private final Product first = new Product(1, "Java: A Beginner's Guide", 19_94);
+    private final Book second = new Book(
             2, "Google It!: A History of Google", 14_62, "Anna Crowley Redding"
     );
-    private Smartphone third = new Smartphone(
+    private final Smartphone third = new Smartphone(
             3, "Samsung Galaxy M12 Smartphone", 127_00, "Samsung Electronics"
     );
 
@@ -107,7 +107,6 @@ class ProductRepositoryTest {
     void shouldFindAllEmptyRepo() {
         Product[] expected = { };
         Product[] actual = repository.findAll();
-
         assertArrayEquals(expected, actual);
     }
 
@@ -118,7 +117,6 @@ class ProductRepositoryTest {
 
         Product[] expected = { second, third };
         Product[] actual = repository.findAll();
-
         assertArrayEquals(expected, actual);
     }
 
