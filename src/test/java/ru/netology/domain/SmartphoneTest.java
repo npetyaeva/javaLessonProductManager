@@ -5,25 +5,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SmartphoneTest {
-    private Smartphone emptySmartphone = new Smartphone();
+    private final Smartphone emptySmartphone = new Smartphone();
 
-    private Smartphone first = new Smartphone(
+    private final Smartphone first = new Smartphone(
             1, "Samsung Galaxy M12 Smartphone", 127_00, "Samsung Electronics"
     );
-    private Smartphone second = new Smartphone(
+    private final Smartphone second = new Smartphone(
             2, "Motorola One 5G Ace", 395_16, "Motorola"
     );
-    private Smartphone third = new Smartphone(
+    private final Smartphone third = new Smartphone(
             1, "Samsung Galaxy M12 Smartphone", 127_00, "Samsung Electronics"
     );
-    private Product fourth = new Product();
+    private final Product fourth = new Product();
 
     //Constructor without parameters
     @Test
     void shoulsGetMakerNoArg() {
         String expected = null;
         String actual = emptySmartphone.getMaker();
-
         assertEquals(expected, actual);
     }
 
@@ -32,7 +31,6 @@ class SmartphoneTest {
     void shoulsGetMakerAllArg() {
         String expected = "Samsung Electronics";
         String actual = first.getMaker();
-
         assertEquals(expected, actual);
     }
 
@@ -41,7 +39,6 @@ class SmartphoneTest {
         String expected = "Samsung";
         first.setMaker("Samsung");
         String actual = first.getMaker();
-
         assertEquals(expected, actual);
     }
 
@@ -49,50 +46,43 @@ class SmartphoneTest {
     void shouldTestToString() {
         String expected = "Smartphone(maker=Samsung Electronics)";
         String actual = first.toString();
-
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldUseEqualTrue() {
-        boolean expected = true;
         boolean actual = first.equals(third);
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
     void shouldUseEqualFalse() {
-        boolean expected = false;
         boolean actual = first.equals(second);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
     void shouldCanEqualLink() {
-        boolean expected = true;
         boolean actual = first.equals(first);
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
     void shouldCanEqualNull() {
-        boolean expected = false;
         boolean actual = first.equals(null);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
     void shouldCanEqualClass() {
-        boolean expected = false;
         boolean actual = first.equals(fourth);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
     void shouldTestHashCode() {
-        int expected = 1667774487;
+        int expected = 2084819786;
         int actual = first.hashCode();
-
         assertEquals(expected, actual);
     }
 }

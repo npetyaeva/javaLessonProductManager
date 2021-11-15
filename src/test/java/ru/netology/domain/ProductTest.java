@@ -5,21 +5,20 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
-    private Product emptyProduct = new Product();
-    private Product first = new Product(1, "Google It!: A History of Google", 14_62);
-    private Product second = new Product(2, "Samsung Galaxy M12 Smartphone", 127_00);
-    private Product third = new Product(1, "Google It!: A History of Google", 14_62);
-    private Book fourth = new Book();
-    private Product fifth = new Product(5, "Google It!: A History of Google", 14_62);
-    private Product sixth = new Product(1, "Google It!: A History of Google", 14_00);
-    private Product seventh = new Product(1, "Google It!", 14_62);
+    private final Product emptyProduct = new Product();
+    private final Product first = new Product(1, "Google It!: A History of Google", 14_62);
+    private final Product second = new Product(2, "Samsung Galaxy M12 Smartphone", 127_00);
+    private final Product third = new Product(1, "Google It!: A History of Google", 14_62);
+    private final Book fourth = new Book();
+    private final Product fifth = new Product(5, "Google It!: A History of Google", 14_62);
+    private final Product sixth = new Product(1, "Google It!: A History of Google", 14_00);
+    private final Product seventh = new Product(1, "Google It!", 14_62);
 
     //Constructor without parameters
     @Test
     void shouldGetIdEmpty() {
         int expected = 0;
         int actual = emptyProduct.getId();
-
         assertEquals(expected, actual);
     }
 
@@ -27,7 +26,6 @@ class ProductTest {
     void shouldGetNameEmpty() {
         String expected = null;
         String actual = emptyProduct.getName();
-
         assertEquals(expected, actual);
     }
 
@@ -35,7 +33,6 @@ class ProductTest {
     void shouldGetPriceEmpty() {
         int expected = 0;
         int actual = emptyProduct.getPrice();
-
         assertEquals(expected, actual);
     }
 
@@ -44,7 +41,6 @@ class ProductTest {
     void shouldGetId() {
         int expected = 1;
         int actual = first.getId();
-
         assertEquals(expected, actual);
     }
 
@@ -52,7 +48,6 @@ class ProductTest {
     void shouldGetName() {
         String expected = "Google It!: A History of Google";
         String actual = first.getName();
-
         assertEquals(expected, actual);
     }
 
@@ -60,7 +55,6 @@ class ProductTest {
     void shouldGetPrice() {
         int expected = 14_62;
         int actual = first.getPrice();
-
         assertEquals(expected, actual);
     }
 
@@ -69,7 +63,6 @@ class ProductTest {
         int expected = 4;
         first.setId(4);
         int actual = first.getId();
-
         assertEquals(expected, actual);
     }
 
@@ -78,7 +71,6 @@ class ProductTest {
         String expected = "Google It!";
         first.setName("Google It!");
         String actual = first.getName();
-
         assertEquals(expected, actual);
     }
 
@@ -87,71 +79,61 @@ class ProductTest {
         int expected = 10_00;
         first.setPrice(10_00);
         int actual = first.getPrice();
-
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldUseEqualTrue() {
-        boolean expected = true;
+    void shouldUseEqualsTrue() {
         boolean actual = first.equals(third);
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    void shouldUseEqualFalse() {
-        boolean expected = false;
+    void shouldUseEqualsFalse() {
         boolean actual = first.equals(second);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualLink() {
-        boolean expected = true;
+    void shouldCanEqualsLink() {
         boolean actual = first.equals(first);
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    void shouldCanEqualClass() {
-        boolean expected = false;
+    void shouldCanEqualsClass() {
         boolean actual = first.equals(fourth);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualNull() {
-        boolean expected = false;
+    void shouldCanEqualsNull() {
         boolean actual = first.equals(null);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualAnd() {
-        boolean expected = false;
+    void shouldCanEqualsReturnId() {
         boolean actual = first.equals(fifth);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualAnd1() {
-        boolean expected = false;
+    void shouldCanEqualsReturnPrice() {
         boolean actual = first.equals(sixth);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualAnd2() {
-        boolean expected = false;
+    void shouldCanEqualsReturnName() {
         boolean actual = first.equals(seventh);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
     void shouldTestHashCode() {
         int expected = 1893842836;
         int actual = first.hashCode();
-
         assertEquals(expected, actual);
     }
 
@@ -159,7 +141,6 @@ class ProductTest {
     void shouldTestToString() {
         String expected = "Product{id=1, name='Google It!: A History of Google', price=1462}";
         String actual = first.toString();
-
         assertEquals(expected, actual);
     }
 }
