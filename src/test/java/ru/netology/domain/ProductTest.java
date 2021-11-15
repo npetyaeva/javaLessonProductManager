@@ -83,59 +83,53 @@ class ProductTest {
     }
 
     @Test
-    void shouldUseEqualTrue() {
-        boolean expected = true;
+    void shouldUseEqualsTrue() {
         boolean actual = first.equals(third);
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    void shouldUseEqualFalse() {
+    void shouldUseEqualsFalse() {
         boolean expected = false;
         boolean actual = first.equals(second);
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldCanEqualLink() {
-        boolean expected = true;
+    void shouldEqualsLink() {
         boolean actual = first.equals(first);
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    void shouldCanEqualClass() {
-        boolean expected = false;
+    void shouldEqualsClass() {
         boolean actual = first.equals(fourth);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualNull() {
+    void shouldEqualsNull() {
         boolean expected = false;
         boolean actual = first.equals(null);
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldCanEqualAnd() {
-        boolean expected = false;
+    void shouldEqualsReturnId() {
         boolean actual = first.equals(fifth);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualAnd1() {
-        boolean expected = false;
+    void shouldEqualsReturnName() {
         boolean actual = first.equals(sixth);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualAnd2() {
-        boolean expected = false;
+    void shouldEqualsReturnPrice() {
         boolean actual = first.equals(seventh);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test

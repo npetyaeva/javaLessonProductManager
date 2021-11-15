@@ -50,38 +50,33 @@ class SmartphoneTest {
     }
 
     @Test
-    void shouldUseEqualTrue() {
-        boolean expected = true;
+    void shouldUseEqualsTrue() {
         boolean actual = first.equals(third);
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    void shouldUseEqualFalse() {
-        boolean expected = false;
+    void shouldUseEqualsFalse() {
         boolean actual = first.equals(second);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualLink() {
-        boolean expected = true;
+    void shouldEqualsLink() {
         boolean actual = first.equals(first);
-        assertEquals(expected, actual);
+        assertTrue(actual);
     }
 
     @Test
-    void shouldCanEqualNull() {
-        boolean expected = false;
+    void shouldEqualsNull() {
         boolean actual = first.equals(null);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
-    void shouldCanEqualClass() {
-        boolean expected = false;
+    void shouldEqualsClass() {
         boolean actual = first.equals(fourth);
-        assertEquals(expected, actual);
+        assertFalse(actual);
     }
 
     @Test
